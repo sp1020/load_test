@@ -7,20 +7,11 @@ import time
 
 class TestSingle:
 	def __init__(self):
-		self.real = []
-		self.user = []
-		self.sys = []
+		pass
 
 	def test(self):
-		# test 
-		# for i in range(10):
 		while True:
 			self.single_run()
-
-		# report
-		print np.average(self.real)
-		print np.average(self.user)
-		print np.average(self.sys)
 
 	def single_run(self):
 		p = subprocess.Popen('time -p ./count.py',
@@ -42,13 +33,13 @@ class TestSingle:
 			s = l.split()
 			if len(s) == 2:
 				if s[0] == 'real':
-					self.real.append(float(s[1]))
+					# self.real.append(float(s[1]))
 					real = float(s[1])
 				elif s[0] == 'user':
-					self.user.append(float(s[1]))
+					# self.user.append(float(s[1]))
 					user = float(s[1])
 				elif s[0] == 'sys':
-					self.sys.append(float(s[1]))
+					# self.sys.append(float(s[1]))
 					sys = float(s[1])
 
 		conn = sqlite3.connect("cpu.db")
