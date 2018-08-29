@@ -7,7 +7,11 @@ import time
 
 class TestSingle:
 	def __init__(self):
-		pass
+		conn = sqlite3.connect("cpu.db")
+		cur = conn.cursor()
+		cur.execute('create table if not exists cpu (time datetime, real float, user float, sys float)')
+		conn.commit()
+		conn.close()
 
 	def test(self):
 		while True:
@@ -19,12 +23,6 @@ class TestSingle:
 							 stderr=subprocess.PIPE,
 							 shell=True)
 		so, se = p.communicate()
-		
-		conn = sqlite3.connect("cpu.db")
-		cur = conn.cursor()
-		cur.execute('create table if not exists cpu (time datetime, real float, user float, sys float)')
-		conn.commit()
-		conn.close()
 
 		real = 0 
 		user = 0
@@ -33,13 +31,10 @@ class TestSingle:
 			s = l.split()
 			if len(s) == 2:
 				if s[0] == 'real':
-					# self.real.append(float(s[1]))
 					real = float(s[1])
 				elif s[0] == 'user':
-					# self.user.append(float(s[1]))
 					user = float(s[1])
 				elif s[0] == 'sys':
-					# self.sys.append(float(s[1]))
 					sys = float(s[1])
 
 		conn = sqlite3.connect("cpu.db")
