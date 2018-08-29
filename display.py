@@ -13,7 +13,6 @@ print df
 
 fig = pylab.figure(figsize=(15, 10))
 ax = fig.add_subplot(111)
-ax.grid()
 ax.plot(df.loc[:, 'time'], df.loc[:, 'real'])
 ax.plot(df.loc[:, 'time'], df.loc[:, 'user'])
 
