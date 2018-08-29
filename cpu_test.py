@@ -13,7 +13,8 @@ class TestSingle:
 
 	def test(self):
 		# test 
-		for i in range(10):
+		# for i in range(10):
+		while True:
 			self.single_run()
 
 		# report
@@ -34,11 +35,11 @@ class TestSingle:
 		conn.commit()
 		conn.close()
 
+		real = 0 
+		user = 0
+		sys = 0
 		for l in se.split('\n'):
 			s = l.split()
-			real = 0 
-			user = 0
-			sys = 0
 			if len(s) == 2:
 				if s[0] == 'real':
 					self.real.append(float(s[1]))
