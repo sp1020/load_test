@@ -13,6 +13,8 @@ fig = pylab.figure(figsize=(15, 10))
 ax = fig.add_subplot(111)
 ax.plot(df.loc[:, 'time'], df.loc[:, 'real'])
 ax.plot(df.loc[:, 'time'], df.loc[:, 'user'])
+ax.set_ylabel('spent time for calculation')
+fig.tight_layout()
 
 ### Network ###
 conn = sqlite3.connect('network.db')
@@ -32,6 +34,8 @@ for i, e in enumerate(targets):
 	ax.plot(ts, v1)
 	ax.plot(ts, v2)
 	ax.plot(ts, v3)
+	ax.set_ylabel('ping latency (ms)')
+fig.tight_layout()
 
 ### IO ###
 conn = sqlite3.connect('io.db')
@@ -48,15 +52,20 @@ sp = read.loc[:, 'speed']
 lt = read.loc[:, 'latency']
 
 ax1.plot(ts, sp)
+ax1.set_ylabel('read rate')
 ax1_2 = ax1.twinx()
 ax1_2.plot(ts, lt, c='gray')
+ax1_2.set_ylabel('time spent')
 
 ts = write.loc[:, 'time']
 sp = write.loc[:, 'speed']
 lt = write.loc[:, 'latency']
 
 ax2.plot(ts, sp)
+ax1.set_ylabel('write rate')
 ax2_2 = ax2.twinx()
 ax2_2.plot(ts, lt, c='gray')
+ax2_2.set_ylabel('time spent')
+fig.tight_layout()
 
 pylab.show()
