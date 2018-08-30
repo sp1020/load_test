@@ -33,4 +33,30 @@ for i, e in enumerate(targets):
 	ax.plot(ts, v2)
 	ax.plot(ts, v3)
 
+### IO ###
+conn = sqlite3.connect('io.db')
+read = pd.read_sql_query('select * from read', conn)
+write = pd.read_sql_query('select * from write', conn)
+conn.close()
+
+fig = pylab.figure(figsize=(15, 10))
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+
+ts = read.loc[:, 'time']
+sp = read.loc[:, 'speed']
+lt = read.loc[:, 'latency']
+
+ax1.plot(ts, sp)
+ax1_2 = ax1.twinx()
+ax1_2.plot(ts, lt, c='gray')
+
+ts = write.loc[:, 'time']
+sp = write.loc[:, 'speed']
+lt = write.loc[:, 'latency']
+
+ax2.plot(ts, sp)
+ax2_2 = ax2.twinx()
+ax2_2.plot(ts, lt, c='gray')
+
 pylab.show()
