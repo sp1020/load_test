@@ -15,6 +15,9 @@ import sqlite3
 
 class Tester:
 	def __init__(self):
+		pass
+
+	def initialize(self):
 		conn = sqlite3.connect("io.db")
 		cur = conn.cursor()
 		cur.execute('create table if not exists write (time datetime, speed float, latency float)')
@@ -29,6 +32,7 @@ class Tester:
 		p.communicate()
 		
 	def test(self, flag):
+		self.initialize()
 		while True:
 			self.single_run(flag)
 
@@ -86,12 +90,7 @@ class Tester:
 			if 'copied' in l:
 				s = l.split()
 				speed = s[-2]
-				
-			s = l.split()
-				
-			if len(s) == 2:
-				if s[0] == 'real':
-					read_time = float(s[1])
+				read_time = s[-4]
 					
 		conn = sqlite3.connect("io.db")
 		now = time.strftime('%Y-%m-%d %H:%M:%S')
