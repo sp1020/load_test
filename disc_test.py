@@ -105,6 +105,7 @@ class Tester:
 if __name__ == '__main__':
 	t = Tester()
 	if len(sys.argv)>2 and sys.argv[1] == 'superuser':
+		print 'superuser mode'
 		t.test(True)
 	else:
 		t.test(False)
