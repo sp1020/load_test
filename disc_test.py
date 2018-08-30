@@ -108,4 +108,5 @@ if __name__ == '__main__':
 		print 'superuser mode'
 		t.test(True)
 	else:
+		print sys.argv
 		t.test(False)
