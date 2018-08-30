@@ -3,6 +3,7 @@
 """
 ping test 
 """
+import time
 import subprocess
 import sqlite3 
 
@@ -50,7 +51,6 @@ class NetworkMonitor:
 			cur.execute('insert into ping values ("%s", "%s", %s, %s, %s, %s, %s)'%(now, ad, min, avg, max, mdev, loss))
 			conn.commit()
 			conn.close()
-
 
 if __name__ == '__main__':
 	nm = NetworkMonitor()
