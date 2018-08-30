@@ -60,6 +60,8 @@ class Tester:
 		conn.commit()
 		conn.close()
 
+		time.sleep(10)
+
 if __name__ == '__main__':
 	t = Tester()
 	t.test()
