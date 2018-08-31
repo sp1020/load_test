@@ -62,7 +62,7 @@ sp = write.loc[:, 'speed']
 lt = write.loc[:, 'latency']
 
 ax2.plot(ts, sp)
-ax1.set_ylabel('write rate')
+ax2.set_ylabel('write rate')
 ax2_2 = ax2.twinx()
 ax2_2.plot(ts, lt, c='gray')
 ax2_2.set_ylabel('time spent')
