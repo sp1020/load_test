@@ -8,7 +8,7 @@ import subprocess
 import sqlite3 
 
 address={'google': 'www.google.com',
-		 'meta1': '211.57.34.204'
+		 'meta1': 'meta1'
 		 }
 
 
