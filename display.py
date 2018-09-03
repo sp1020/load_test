@@ -15,6 +15,7 @@ ax.plot(df.loc[:, 'time'], df.loc[:, 'real'])
 ax.plot(df.loc[:, 'time'], df.loc[:, 'user'])
 ax.set_ylabel('spent time for calculation')
 fig.tight_layout()
+fig.savefig('cpu.png')
 
 ### Network ###
 conn = sqlite3.connect('network.db')
@@ -36,6 +37,7 @@ for i, e in enumerate(targets):
 	ax.plot(ts, v3)
 	ax.set_ylabel('ping latency (ms)')
 fig.tight_layout()
+fig.savefig('network.png')
 
 ### IO ###
 conn = sqlite3.connect('io.db')
@@ -67,5 +69,6 @@ ax2_2 = ax2.twinx()
 ax2_2.plot(ts, lt, c='gray')
 ax2_2.set_ylabel('time spent')
 fig.tight_layout()
+fig.savefig('io.png')
 
 pylab.show()
